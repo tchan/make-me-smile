@@ -1,0 +1,12 @@
+<div class="post-card">
+  <div {{action 'toggleOpen'}} class="title-bar"> {{post.data.title}}  <span class="pull-right">{{if isOpen 'V' '>'}}</span></div>
+  {{#if isOpen}}
+
+  <a target="_blank" href={{post.data.url}}><img class="img-icon" src={{post.data.thumbnail}} /></a>
+  <hr />
+  <div class="text-center">
+    Submitted at <a target="_blank" href={{redditPermalink}}> r/aww</a> by <a target="_blank" href={{userProfileLink}}>{{post.data.author}}</a>
+  </div>
+
+  {{/if}}
+</div>

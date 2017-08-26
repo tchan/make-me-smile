@@ -1,5 +1,18 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<div class="app-container">
+  <h1 class="text-center">Reddit Aww</h1>
+  {{log 'model' model}}
+  <button {{action 'populateCard'}}>
+    {{#if isLoading}}
+      <div class="loader"></div>
+    {{else}}
+      Make me smile
+    {{/if}}
+  </button>
 
-{{outlet}}
+  {{#if showCards}}
+    {{#each postArray as |post|}}
+      {{post-card post=post}}
+    {{/each}}
+  {{/if}}
+
+</div>

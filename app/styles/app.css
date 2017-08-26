@@ -1,0 +1,68 @@
+.app-container {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto
+}
+button {
+  background-color: #A8DBA8;
+  border:1px solid #18ab29;
+  margin:0 auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 28px;
+  font-size: 1em;
+  padding:15px;
+  width: 250px;
+  height: 60px;
+}
+
+button:hover {
+  background-color: #CFF09E;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+.post-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  max-width: 550px;
+  padding: 4px;
+  margin: 5px;
+}
+
+.post-card .title-bar {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.img-icon {
+  padding: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+ /* Taken from https://www.w3schools.com/howto/howto_css_loader.asp */
+.loader {
+  margin: 0 auto;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid black;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
