@@ -1,7 +1,11 @@
-<button id={{id}} {{action 'populateCard' id}}>
-  {{#if isLoading}}
-    <div class="loader"></div>
-  {{else}}
-    {{id}}
-  {{/if}}
-</button>
+{{#hover-overable isHovered=isHovered}}
+  <button id={{elementId}} class={{hoverClass}} {{action 'populateCard' id}}>
+    {{#if isLoading}}
+      <div class="loader"></div>
+    {{else if isHovered}}
+      Click me!
+    {{else}}
+      {{id}}
+    {{/if}}
+  </button>
+{{/hover-overable}}

@@ -27,7 +27,7 @@
 	top:1px;
 }
 
-.button-container button:hover {
+.button-container .hover {
   background-color: #cff09e;
 }
 .card-container {

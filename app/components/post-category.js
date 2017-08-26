@@ -3,6 +3,16 @@ const { set, inject, computed } = Ember;
 export default Ember.Component.extend({
   ajax: inject.service(),
   isLoading: false,
+  isHovered: false,
+  hoverClass: computed('isHovered', function () {
+    let isHovered = this.get('isHovered');
+    if (isHovered) {
+      return 'hover';
+    } else {
+      return '';
+    }
+  }),
+
   actions: {
     populateCard: function(category) {
       this.set('showCards', true);

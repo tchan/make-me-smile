@@ -3,18 +3,22 @@ import moduleForAcceptance from 'make-me-smile/tests/helpers/module-for-acceptan
 
 moduleForAcceptance('Acceptance | button');
 
-test('visiting index and hover triggers hover state', function(assert) {
+test('visiting index and hover triggers hover state for each button', function(assert) {
   visit('/');
-  // triggerEvent('button', 'hover');
-  // triggerEvent hover/mouseEnter does not work
-  andThen(function() {
-    assert.equal(currentURL(), '/');
-    let button = find('#populateButton');
-    button.mouseenter();
+  let categories = ['hot', 'new', 'rising', 'controversial', 'top'];
+
+  categories.forEach(function(category) {
+    andThen(function() {
+    assert.equal(find(`button#${category}`).length, 1, `${category} button exists`);
+    });
+    andThen(function() {
+      let button = find(`button#${category}`);
+      button.mouseenter();
+    });
+    andThen(function() {
+      let button = find(`button#${category}`);
+      assert.equal(button.text().trim(), 'Click me!', `${category} button has correct text`);
+      assert.equal(button.hasClass('hover'), true, `${category} button has correct class`);
+    });
   });
-  andThen(function() {
-    let button = find('#populateButton');
-    assert.equal(button.text().trim(), 'Click and you will smile', 'Correct text displayed');
-    assert.equal(button.hasClass('hover'), true, 'Button has correct class');
-});
 });
