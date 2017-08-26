@@ -1,13 +1,16 @@
 <div class="app-container">
   <h1 class="text-center">Reddit Aww</h1>
-  {{log 'model' model}}
-  <button {{action 'populateCard'}}>
-    {{#if isLoading}}
-      <div class="loader"></div>
-    {{else}}
+  {{#hover-overable isHovered=isHovered}}
+    <button id="populateButton" class={{hoverClass}} {{action 'populateCard'}}>
+      {{#if isLoading}}
+        <div class="loader"></div>
+      {{else if hoverClass}}
+        Click and you will smile
+      {{else}}
       Make me smile
-    {{/if}}
-  </button>
+      {{/if}}
+    </button>
+  {{/hover-overable}}
 
   {{#if showCards}}
     {{#each postArray as |post|}}
@@ -16,3 +19,4 @@
   {{/if}}
 
 </div>
+{{outlet}}

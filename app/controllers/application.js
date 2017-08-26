@@ -1,31 +1,31 @@
 import Ember from 'ember';
-import DS from 'ember-data';
 
-const { set, get, computed, inject } = Ember;
-const { PromiseObject } = DS;
+const { set, inject, computed } = Ember;
 
 export default Ember.Controller.extend({
   ajax: inject.service(),
   showCards: false,
   isLoading: false,
+  isHovered: false,
+  hoverClass: computed('isHovered', function(){
+    let isHovered = this.get('isHovered');
+    if (isHovered) {
+      return 'hover';
+    } else {
+      return '';
+    }
+  }),
   postArray: Ember.A([]),
-  //
-  // redditPostsArrayPromise: computed('showCards', function() {
-  //   console.log('showCard is true');
-  //   var promise = this.get('ajax').request('https://www.reddit.com/r/aww.json').then(object => object.data.children);
-  //   return PromiseObject.create({
-  //     promise: promise
-  //   });
-  // }),
-  //
-  // redditPostsArray: computed.reads('redditPostsArrayPromise.content'),
 
   actions: {
     populateCard: function() {
       this.set('showCards', true);
       this.set('isLoading', true);
-      var promise = this.get('ajax').request('https://www.reddit.com/r/aww.json').then(object => {
+      this.get('ajax').request('https://www.reddit.com/r/aww.json').then(object => {
         set(this, 'postArray', object.data.children);
+      })
+      .catch(() => {
+        alert('An error has occured');
       })
       .finally(() => set(this, 'isLoading', false));
 

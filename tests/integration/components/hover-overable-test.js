@@ -1,7 +1,7 @@
 // import { moduleForComponent, test } from 'ember-qunit';
 // import hbs from 'htmlbars-inline-precompile';
 //
-// moduleForComponent('post-card', 'Integration | Component | post card', {
+// moduleForComponent('hover-overable', 'Integration | Component | hover overable', {
 //   integration: true
 // });
 //
@@ -10,15 +10,15 @@
 //   // Set any properties with this.set('myProperty', 'value');
 //   // Handle any actions with this.on('myAction', function(val) { ... });
 //
-//   this.render(hbs`{{post-card}}`);
+//   this.render(hbs`{{hover-overable}}`);
 //
 //   assert.equal(this.$().text().trim(), '');
 //
 //   // Template block usage:
 //   this.render(hbs`
-//     {{#post-card}}
+//     {{#hover-overable}}
 //       template block text
-//     {{/post-card}}
+//     {{/hover-overable}}
 //   `);
 //
 //   assert.equal(this.$().text().trim(), 'template block text');
