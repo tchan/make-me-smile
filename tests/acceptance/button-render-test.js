@@ -5,11 +5,10 @@ moduleForAcceptance('Acceptance | button');
 
 test('visiting index and resting states displays correctly', function(assert) {
   visit('/');
+  let categories = ['hot', 'new', 'rising', 'controversial', 'top'];
   andThen(function() {
-    assert.equal(find('#hot').text().trim(), 'hot', 'hot button is displaying correctly at resting state');
-    assert.equal(find('#new').text().trim(), 'new', 'new button is displaying correctly at resting state');
-    assert.equal(find('#rising').text().trim(), 'rising', 'rising button is displaying correctly at resting state');
-    assert.equal(find('#controversial').text().trim(), 'controversial', 'controversial button is displaying correctly at resting state');
-    assert.equal(find('#top').text().trim(), 'top', 'top button is displaying correctly at resting state');
+    categories.forEach(function(category) {
+      assert.equal(find(`#${category}`).text().trim(), `${category}`, `${category} button is displaying correctly at resting state`);
+    });
   });
 });
