@@ -1,9 +1,26 @@
 import Ember from 'ember';
-const { set, inject, computed } = Ember;
+const { inject, computed } = Ember;
 export default Ember.Component.extend({
   ajax: inject.service(),
-  isLoading: false,
   isHovered: false,
+  view: null,
+  isLoading: computed('view', 'postArray', function () {
+    let view = this.get('view')
+    let id = this.get('id');
+    let postArray = this.get('postArray');
+
+    if (view === id) {
+      if (postArray) {
+        return false;
+      }
+      return true;
+    }
+
+    else {
+      return false;
+    }
+  }),
+
   hoverClass: computed('isHovered', function () {
     let isHovered = this.get('isHovered');
     if (isHovered) {
@@ -15,15 +32,7 @@ export default Ember.Component.extend({
 
   actions: {
     populateCard: function(category) {
-      this.set('showCards', true);
-      this.set('isLoading', true);
-      this.get('ajax').request(`https://www.reddit.com/r/aww/${category}.json`).then(object => {
-        set(this, 'postArray', object.data.children);
-      })
-      .catch(() => {
-        alert('An error has occured');
-      })
-      .finally(() => set(this, 'isLoading', false));
+      this.set('view', category);
     }
   }
 });

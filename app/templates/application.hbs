@@ -3,13 +3,13 @@
 
     <div class="button-container">
       {{#each categories as |category|}}
-        {{post-category id=category postArray=postArray showCards=showCards}}
+        {{post-category id=category postArray=postArrayContent view=view}}
       {{/each}}
     </div>
 
-  {{#if showCards}}
+  {{#if postArrayContent}}
   <div class="card-container">
-    {{#each postArray as |post|}}
+    {{#each postArrayContent as |post|}}
       {{post-card post=post}}
     {{/each}}
   </div>
