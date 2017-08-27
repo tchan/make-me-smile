@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-const { inject, computed } = Ember;
+const { inject, observer } = Ember;
 const { PromiseArray } = DS;
 export default Ember.Controller.extend({
   ajax: inject.service(),
@@ -8,17 +8,17 @@ export default Ember.Controller.extend({
   view: null,
   categories: ['hot', 'new', 'rising', 'controversial', 'top'],
 
-  postArrayPromise: computed('view', function() {
+  postArrayPromise: observer('view', function() {
     let category = this.get('view');
     if (category) {
       let promise = this.get('ajax').request(`https://www.reddit.com/r/aww/${category}.json`).then(object => {
         return object.data.children;
       });
-      return PromiseArray.create({ promise });
+      this.set('postArrayContent', PromiseArray.create({ promise }));
     } else {
-      return Ember.A([]);
+      this.set('postArrayContent',  Ember.A([]));
     }
   }),
-  
-  postArrayContent: computed.reads('postArrayPromise.content')
+
+  postArrayContent: []
 });

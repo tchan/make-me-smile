@@ -4,22 +4,7 @@ export default Ember.Component.extend({
   ajax: inject.service(),
   isHovered: false,
   view: null,
-  isLoading: computed('view', 'postArray', function () {
-    let view = this.get('view')
-    let id = this.get('id');
-    let postArray = this.get('postArray');
-    // change the isLoading property on the component that was clicked
-    if (view === id) {
-      if (postArray) {
-        return false;
-      }
-      return true;
-    }
-
-    else {
-      return false;
-    }
-  }),
+  isLoading: false,
 
   hoverClass: computed('isHovered', function () {
     let isHovered = this.get('isHovered');
@@ -33,6 +18,13 @@ export default Ember.Component.extend({
   actions: {
     populateCard: function(category) {
       this.set('view', category);
+      this.set('isLoading', true);
+      this.get('ajax').request(`https://www.reddit.com/r/aww/${category}.json`).then(object => {
+        this.set('postArrayContent', object.data.children);
+      })
+      .finally(() => {
+      this.set('isLoading', false);
+      });
     }
   }
 });
