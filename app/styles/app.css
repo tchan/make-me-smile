@@ -1,7 +1,13 @@
+body {
+  background-color: #E9E7E4;
+}
+/*button,input,select,textarea{font:inherit;margin:0}optgroup{}
+button,input{}button,select{}
+button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}*/
 .app-container {
   width: 850px;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
 }
 
 .button-container {
@@ -12,6 +18,9 @@
 
 .button-container button {
   float:left;
+  font-weight:bold;
+  text-transform:capitalize;
+  overflow:visible;
   background-color: #A8DBA8;
   border:1px solid #18ab29;
   display: inline-block;
@@ -19,7 +28,8 @@
   border-radius: 28px;
   font-size: 1em;
   width: 150px;
-  height: 60px;
+  height: 40px;
+  outline: none;
 }
 
 .button-container button:active {
@@ -43,11 +53,14 @@
   padding: 4px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: #D1F2A5;
 }
 
 .post-card .title-bar {
   text-align: center;
   font-size: 1.3em;
+  background-color: #EFFAB4;
+  border-radius: 5px;
 }
 
 .img-container {
@@ -66,6 +79,7 @@
 .pull-right {
   float: right;
 }
+
 
  /* Taken from https://www.w3schools.com/howto/howto_css_loader.asp */
 .loader {

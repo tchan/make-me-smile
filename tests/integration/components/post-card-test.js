@@ -1,25 +1,23 @@
-// import { moduleForComponent, test } from 'ember-qunit';
-// import hbs from 'htmlbars-inline-precompile';
-//
-// moduleForComponent('post-card', 'Integration | Component | post card', {
-//   integration: true
-// });
-//
-// test('it renders', function(assert) {
-//
-//   // Set any properties with this.set('myProperty', 'value');
-//   // Handle any actions with this.on('myAction', function(val) { ... });
-//
-//   this.render(hbs`{{post-card}}`);
-//
-//   assert.equal(this.$().text().trim(), '');
-//
-//   // Template block usage:
-//   this.render(hbs`
-//     {{#post-card}}
-//       template block text
-//     {{/post-card}}
-//   `);
-//
-//   assert.equal(this.$().text().trim(), 'template block text');
-// });
+import { moduleForComponent, test } from 'ember-qunit';
+import hbs from 'htmlbars-inline-precompile';
+
+moduleForComponent('post-card', 'Integration | Component | post card', {
+  integration: true
+});
+
+test('post card test displaying correctly?', function(assert) {
+
+  this.set('testCard', [{
+    data: {
+      title: 'test',
+    }
+  }][0]);
+  // Template block usage:
+  this.render(hbs`
+    {{#post-card post=testCard}}
+    {{/post-card}}
+  `);
+
+  assert.equal(this.$('div .title-bar').text().trim(), 'testV', 'title displaying correctly');
+  assert.equal(this.$('div .text-center').text().trim(), 'Submitted at r/aww by', 'submission text displaying correctly');
+});
