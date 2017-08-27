@@ -17,8 +17,8 @@ test('visiting index and hover triggers hover state for each button', function(a
     });
     andThen(function() {
       let button = find(`button#${category}`);
-      assert.equal(button.text().trim(), 'Click me!', `${category} button has correct text`);
-      assert.equal(button.hasClass('hover'), true, `${category} button has correct class`);
+      assert.equal(button.text().trim(), 'Click me!', `${category} button has correct text when hovered`);
+      assert.equal(button.hasClass('hover'), true, `${category} button has correct class when hovered`);
     });
   });
 });

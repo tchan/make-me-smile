@@ -8,7 +8,7 @@ export default Ember.Component.extend({
     let view = this.get('view')
     let id = this.get('id');
     let postArray = this.get('postArray');
-
+    // change the isLoading property on the component that was clicked
     if (view === id) {
       if (postArray) {
         return false;

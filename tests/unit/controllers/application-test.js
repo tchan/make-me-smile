@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('controller:application', 'Unit | Controller | application', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  //if i don't have needs service ajax it fails
+  needs: ['service:ajax']
 });
 
 // Replace this with your real tests.

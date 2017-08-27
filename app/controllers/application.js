@@ -19,9 +19,6 @@ export default Ember.Controller.extend({
       return Ember.A([]);
     }
   }),
-
-  postArrayContent: computed.reads('postArrayPromise.content'),
-
-  actions: {
-  }
+  
+  postArrayContent: computed.reads('postArrayPromise.content')
 });
